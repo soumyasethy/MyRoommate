@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.soumya.sethy.myroommate.R;
 import com.soumya.sethy.myroommate.models.FlowLayout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
@@ -38,7 +41,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movie movie = moviesList.get(position);
         holder.title.setText(movie.getTitle());
-        holder.year.setText(movie.getYear());
+        holder.year.setText(parseDateToddMMyyyy(movie.getYear()));
+
         addChildTo(holder.flow_layout, movie.getNameSpilt());
     }
 
@@ -111,5 +115,21 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
             flow_layout = (FlowLayout) view.findViewById(R.id.flow_layout);
         }
     }
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyyMMdd";
+        String outputPattern = "ddMMM-yyyy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
 
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

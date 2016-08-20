@@ -322,7 +322,6 @@ public class Tab3Fragment extends Fragment {
                     Name = Float.parseFloat(Amount) >= 0 ? "+" + Name :"-" + Name;
                     mPieChart.addPieSlice(new PieModel(Name, Math.abs(Float.parseFloat(Amount)), Color.parseColor(randomColor())));
                     //mBarChart.addBar(new BarModel(Name, Math.abs(Float.parseFloat(Amount)), Color.parseColor(randomColor())));
-
                     c1.moveToNext();
                 }
             }
