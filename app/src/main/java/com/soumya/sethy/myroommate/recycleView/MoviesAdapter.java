@@ -2,6 +2,7 @@ package com.soumya.sethy.myroommate.recycleView;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,22 +52,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         final String[] temp_list = alldata.split(",");
         for (int j = 0; j < temp_list.length; j++) {
 
+
             btn = new Button(ctx, null, android.R.attr.buttonStyleSmall);
             btn.setHeight(dp2px(18));
             btn.setTextSize(10);
             btn.setTextColor(Color.BLACK);
             // btn.setTextColor(getResources().getColorStateList(R.color.checkable_text_color));
             // btn.setBackgroundResource(R.drawable.checkable_background);
-            btn.setText(temp_list[j]);
+
             btn.setTag(temp_list[j]);
             flowLayout.addView(btn);
-            Drawable drawable = ctx.getResources().getDrawable(R.drawable.check24);
-
-            //hide drawable with this call
-            //btn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null); //order of params (left, top, right, bottom)
-
-            //show drawable on right side of button with this call (in your onclick method)
-            btn.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
 
             btn.setOnClickListener(new View.OnClickListener() {
 
@@ -77,6 +72,24 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
                 }
             });
+            try {
+                String p_name = temp_list[j].split(":")[0];
+                String p_rs = (temp_list[j].split(":")[1]).split("-")[0];
+                String p_split_status = (temp_list[j].split(":")[1]).split("-")[1];
+                btn.setText(" " + p_name + "(Rs." + p_rs + ")");
+                if (p_split_status.equalsIgnoreCase("Y")) {
+                    Drawable drawable = ctx.getResources().getDrawable(R.drawable.ok16);
+                    //hide drawable with this call
+                    //btn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null); //order of params (left, top, right, bottom)
+                    //show drawable on right side of button with this call (in your onclick method)
+                    btn.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                }
+                else{
+                    btn.setPaintFlags(btn.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
     }
