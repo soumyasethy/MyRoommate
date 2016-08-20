@@ -2,6 +2,7 @@ package com.soumya.sethy.myroommate.recycleView;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,25 +17,9 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
 
-    private List<Movie> moviesList;
     public Button btn;
     Context ctx;
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year;
-        public FlowLayout flow_layout;
-
-
-
-        public MyViewHolder(View view,Context context) {
-            super(view);
-            ctx = context;
-            title = (TextView) view.findViewById(R.id.title);
-            year = (TextView) view.findViewById(R.id.year);
-            flow_layout = (FlowLayout) view.findViewById(R.id.flow_layout);
-        }
-    }
-
+    private List<Movie> moviesList;
 
     public MoviesAdapter(List<Movie> moviesList) {
         this.moviesList = moviesList;
@@ -45,7 +30,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.movie_list_row, parent, false);
 
-        return new MyViewHolder(itemView,parent.getContext());
+        return new MyViewHolder(itemView, parent.getContext());
     }
 
     @Override
@@ -53,13 +38,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         Movie movie = moviesList.get(position);
         holder.title.setText(movie.getTitle());
         holder.year.setText(movie.getYear());
-        addChildTo(holder.flow_layout,movie.getNameSpilt());
+        addChildTo(holder.flow_layout, movie.getNameSpilt());
     }
 
     @Override
     public int getItemCount() {
         return moviesList.size();
     }
+
     private void addChildTo(final FlowLayout flowLayout, String alldata) {
         flowLayout.removeAllViews();
         final String[] temp_list = alldata.split(",");
@@ -74,6 +60,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
             btn.setText(temp_list[j]);
             btn.setTag(temp_list[j]);
             flowLayout.addView(btn);
+            Drawable drawable = ctx.getResources().getDrawable(R.drawable.check24);
+
+            //hide drawable with this call
+            //btn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null); //order of params (left, top, right, bottom)
+
+            //show drawable on right side of button with this call (in your onclick method)
+            btn.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
 
             btn.setOnClickListener(new View.OnClickListener() {
 
@@ -90,6 +83,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     public int dp2px(int dpValue) {
         return (int) (dpValue * ctx.getResources().getDisplayMetrics().density);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, year;
+        public FlowLayout flow_layout;
+
+
+        public MyViewHolder(View view, Context context) {
+            super(view);
+            ctx = context;
+            title = (TextView) view.findViewById(R.id.title);
+            year = (TextView) view.findViewById(R.id.year);
+            flow_layout = (FlowLayout) view.findViewById(R.id.flow_layout);
+        }
     }
 
 }
