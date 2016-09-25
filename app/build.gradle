@@ -12,7 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-       // javaMaxHeapSize "4g"
+        //javaMaxHeapSize "4g"
+    }
+    dexOptions {
+        //incremental true
+        javaMaxHeapSize "4G"
     }
     buildTypes {
         release {
@@ -68,7 +72,7 @@ dependencies {
     compile 'com.mxn.soul:flowingdrawer-core:1.2.5'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
-
+    compile "com.dev.sacot41:scviewpager:0.0.4"
 
 }
 

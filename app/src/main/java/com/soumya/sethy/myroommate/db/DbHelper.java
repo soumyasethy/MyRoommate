@@ -88,7 +88,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 		 
 		Cursor cursor = db.rawQuery("SELECT _id FROM detail_table WHERE _id = (SELECT MAX(_id)  FROM detail_table);", null);
-		if (cursor.getCount() < 1) // STUDYCODE Not Exist
+		if (cursor.getCount() < 1)
 			return 0;
 		cursor.moveToFirst();
 		int researchname = 0 ;
@@ -128,6 +128,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	public Cursor getExpense() {
 		SQLiteDatabase db = this.getReadableDatabase();
+		//returns
+		/*"A"-"152.5"
+		"C"-"30.0"
+		"B"-"-182.5"*/
 
 		return db
 				.rawQuery(
