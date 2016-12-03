@@ -15,9 +15,9 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 
+import com.soumya.sethy.myroommate.Pojo.UserBillDetails;
 import com.soumya.sethy.myroommate.R;
 import com.soumya.sethy.myroommate.adapters.MyFragmentPagerAdapter;
-import com.soumya.sethy.myroommate.Pojo.UserBillDetails;
 import com.soumya.sethy.myroommate.db.DbHelper;
 
 import java.util.List;
@@ -28,10 +28,10 @@ public class MyHomeNonCoordinateLayout extends Fragment implements OnTabChangeLi
     public static String Roommate_Name = "";
     public static TabHost tabHost;
     ViewPager viewPager;
-    private MyFragmentPagerAdapter myViewPagerAdapter;
     int i = 0;
     View v;
     DbHelper db;
+    private MyFragmentPagerAdapter myViewPagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -82,23 +82,6 @@ public class MyHomeNonCoordinateLayout extends Fragment implements OnTabChangeLi
 		 * ********
 		 */
         return v;
-    }
-
-    // fake content for tabhost
-    class FakeContent implements TabContentFactory {
-        private final Context mContext;
-
-        public FakeContent(Context context) {
-            mContext = context;
-        }
-
-        @Override
-        public View createTabContent(String tag) {
-            View v = new View(mContext);
-            v.setMinimumHeight(0);
-            v.setMinimumWidth(0);
-            return v;
-        }
     }
 
     private void initializeViewPager() {
@@ -236,5 +219,22 @@ public class MyHomeNonCoordinateLayout extends Fragment implements OnTabChangeLi
         }
 
 
+    }
+
+    // fake content for tabhost
+    class FakeContent implements TabContentFactory {
+        private final Context mContext;
+
+        public FakeContent(Context context) {
+            mContext = context;
+        }
+
+        @Override
+        public View createTabContent(String tag) {
+            View v = new View(mContext);
+            v.setMinimumHeight(0);
+            v.setMinimumWidth(0);
+            return v;
+        }
     }
 }

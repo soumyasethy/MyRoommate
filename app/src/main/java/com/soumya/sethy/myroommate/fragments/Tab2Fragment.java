@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -25,7 +24,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.codetroopers.betterpickers.datepicker.DatePickerBuilder;
 import com.codetroopers.betterpickers.datepicker.DatePickerDialogFragment;
 import com.firebase.client.Firebase;
 import com.nispok.snackbar.Snackbar;
@@ -44,7 +42,7 @@ import com.soumya.sethy.myroommate.adapters.RoommateName;
 import com.soumya.sethy.myroommate.config.config;
 import com.soumya.sethy.myroommate.db.DbHelper;
 import com.soumya.sethy.myroommate.models.FlowLayout;
-import android.support.v4.app.Fragment;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -151,7 +149,7 @@ public class Tab2Fragment extends android.support.v4.app.Fragment implements Dat
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat(
                 /*hh:mm aa */"yyyyMMdd", Locale.getDefault());
-                Date today = cal.getInstance().getTime();
+                Date today = Calendar.getInstance().getTime();
                 src_transaction_dt = Integer.valueOf(dateFormat.format(today));
 
                 // Getting Separate Payment Details of all user
@@ -225,7 +223,6 @@ public class Tab2Fragment extends android.support.v4.app.Fragment implements Dat
                 }
                 ref.child("Expenses").child(String.valueOf(_id)).setValue(all_expensesObj);
                 //Tab3Fragment.dialogFragment.dismiss();
-                ;
                 //Toast.makeText(getActivity(), "Expenses Added", 1000).show();
                 Snackbar.with(getActivity()) // context
                         .text("Expenses Added")

@@ -1,15 +1,5 @@
 package com.soumya.sethy.myroommate.fragments;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,12 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.soumya.sethy.myroommate.Pojo.DataObject_CardsView;
 import com.soumya.sethy.myroommate.R;
 import com.soumya.sethy.myroommate.adapters.MyRecyclerViewAdapter;
 import com.soumya.sethy.myroommate.db.DbHelper;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Tab4Fragment extends Fragment {
 	DbHelper dbhelper;
@@ -37,10 +33,28 @@ public class Tab4Fragment extends Fragment {
 	List printBill;
 	ArrayAdapter<String> listAdapter;
 	Cursor c1 = null;
+	ArrayList<String> billReview;
 	private RecyclerView mRecyclerView;
 	private RecyclerView.Adapter mAdapter;
 	private RecyclerView.LayoutManager mLayoutManager;
-    ArrayList<String> billReview;
+
+	public static Object getKeyFromValue(HashMap hm, Double value) {
+		for (Object o : hm.keySet()) {
+			if (hm.get(o).equals(value)) {
+				return o;
+			}
+		}
+		return null;
+	}
+
+	public static double round(double value, int places) {
+		if (places < 0)
+			throw new IllegalArgumentException();
+
+		BigDecimal bd = new BigDecimal(value);
+		bd = bd.setScale(places, RoundingMode.HALF_UP);
+		return bd.doubleValue();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -109,7 +123,7 @@ public class Tab4Fragment extends Fragment {
 
 	public void findPath(HashMap details){
 
-		Double Max_Value = (Double)Collections.max(details.values());;
+		Double Max_Value = (Double) Collections.max(details.values());
 		Double Min_Value = (Double)Collections.min(details.values());
 		if(Max_Value !=Min_Value){
 		String Max_Key =	getKeyFromValue(details, Max_Value).toString();
@@ -148,22 +162,6 @@ public class Tab4Fragment extends Fragment {
 		}
 
 		}
-	public static Object getKeyFromValue(HashMap hm, Double value) {
-		for (Object o : hm.keySet()) {
-			if (hm.get(o).equals(value)) {
-				return o;
-			}
-		}
-	return  null;}
-
-	public static double round(double value, int places) {
-		if (places < 0)
-			throw new IllegalArgumentException();
-
-		BigDecimal bd = new BigDecimal(value);
-		bd = bd.setScale(places, RoundingMode.HALF_UP);
-		return bd.doubleValue();
-	}
 
 	@Override
 	public void onResume() {

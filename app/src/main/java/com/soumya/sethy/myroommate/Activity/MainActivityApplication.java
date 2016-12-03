@@ -1,8 +1,5 @@
 package com.soumya.sethy.myroommate.Activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +23,9 @@ import com.soumya.sethy.myroommate.fragments.MyHome;
 import com.soumya.sethy.myroommate.fragments.MySettings;
 import com.soumya.sethy.myroommate.models.NavItem;
 import com.soumya.sethy.myroommate.sync.sync;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivityApplication extends ActionBarActivity {
 

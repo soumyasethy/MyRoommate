@@ -6,26 +6,25 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.firebase.client.Firebase;
 import com.nispok.snackbar.Snackbar;
-//import com.rengwuxian.materialedittext.MaterialEditText;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 import com.soumya.sethy.myroommate.Activity.MainActivityApplicationLeftDraw;
-import com.soumya.sethy.myroommate.R;
 import com.soumya.sethy.myroommate.Pojo.Person;
+import com.soumya.sethy.myroommate.R;
 import com.soumya.sethy.myroommate.config.config;
 import com.soumya.sethy.myroommate.db.DbHelper;
+
+//import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class Tab1Fragment extends Fragment {
     DbHelper db;

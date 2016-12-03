@@ -18,7 +18,6 @@ import com.soumya.sethy.myroommate.fragments.MyHome;
 import com.soumya.sethy.myroommate.fragments.MySettings;
 import com.soumya.sethy.myroommate.fragments.Tab1Fragment;
 import com.soumya.sethy.myroommate.fragments.Tab2Fragment;
-import com.soumya.sethy.myroommate.fragments.Tab3Fragment;
 import com.soumya.sethy.myroommate.models.NavItem;
 import com.soumya.sethy.myroommate.sync.sync;
 

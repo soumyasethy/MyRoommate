@@ -7,8 +7,6 @@ package com.soumya.sethy.myroommate.adapters;
  * @author soumya
  */
 
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
@@ -19,17 +17,17 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.soumya.sethy.myroommate.R;
 
+import java.util.HashMap;
+
 public class CustomListAdapter extends ArrayAdapter<String> {
 
+    public static HashMap<String, String> data = new HashMap<String, String>();
     private final Activity context;
     private final String[] itemname;
-    public static HashMap<String, String> data = new HashMap<String, String>();
 
     public CustomListAdapter(Activity context, String[] itemname) {
         super(context, R.layout.popup_layout, itemname);

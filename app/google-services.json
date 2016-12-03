@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "470703966907",
+    "firebase_url": "https://myroommate-ccf67.firebaseio.com",
+    "project_id": "myroommate-ccf67",
+    "storage_bucket": "myroommate-ccf67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470703966907:android:acfc750db00610e8",
+        "android_client_info": {
+          "package_name": "com.soumya.sethy.myroommate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470703966907-d79arma7bmnghapgrlfqh02aq1f4rf3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.soumya.sethy.myroommate",
+            "certificate_hash": "BBDD8DA3DE07ECE91C09ABCADD25250D9B691FEF"
+          }
+        },
+        {
+          "client_id": "470703966907-o4j1patvmp1vag05j841j31ou27tai7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv5e9jwLRMD4jeZd92yt8jtMhmRa7fMSg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470703966907-o4j1patvmp1vag05j841j31ou27tai7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

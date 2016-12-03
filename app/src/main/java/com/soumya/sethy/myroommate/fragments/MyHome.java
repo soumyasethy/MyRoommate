@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TabHost.TabContentFactory;
 
-import com.ToxicBakery.viewpager.transforms.FlipHorizontalTransformer;
-import com.ToxicBakery.viewpager.transforms.RotateUpTransformer;
 import com.soumya.sethy.myroommate.Activity.MainActivityApplicationLeftDraw;
 import com.soumya.sethy.myroommate.Pojo.UserBillDetails;
 import com.soumya.sethy.myroommate.R;
@@ -41,12 +37,12 @@ public class MyHome extends Fragment /*implements OnTabChangeListener,*/
     public static String Roommate_Name = "";
     // public static TabHost tabHost;
     ViewPager viewPager;
-    private MyFragmentPagerAdapter myViewPagerAdapter;
     int i = 0;
     View v;
     DbHelper db;
     BarChart mBarChart;
     TabLayout tabLayout;
+    private MyFragmentPagerAdapter myViewPagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -114,23 +110,6 @@ public class MyHome extends Fragment /*implements OnTabChangeListener,*/
         return v;
     }
 
-    // fake content for tabhost
-    class FakeContent implements TabContentFactory {
-        private final Context mContext;
-
-        public FakeContent(Context context) {
-            mContext = context;
-        }
-
-        @Override
-        public View createTabContent(String tag) {
-            View v = new View(mContext);
-            v.setMinimumHeight(0);
-            v.setMinimumWidth(0);
-            return v;
-        }
-    }
-
     private void initializeViewPager() {
 
         /*Adapter adapter = new Adapter(getSupportFragmentManager());
@@ -194,6 +173,24 @@ public class MyHome extends Fragment /*implements OnTabChangeListener,*/
         }, 2000L);
     }
 
+    /* @Override
+     public void onTabChanged(String tabId) {
+         int pos = tabHost.getCurrentTab();
+         this.viewPager.setCurrentItem(pos);
+
+         HorizontalScrollView hScrollView = (HorizontalScrollView) v
+                 .findViewById(R.id.hScrollView);
+         View tabView = tabHost.getCurrentTabView();
+         int scrollPos = tabView.getLeft()
+                 - (hScrollView.getWidth() - tabView.getWidth()) / 2;
+         hScrollView.smoothScrollTo(scrollPos, 0);
+
+     }
+ */
+    @Override
+    public void onPageScrollStateChanged(int arg0) {
+    }
+
    /* private void initializeTabHost(Bundle args) {
 
         tabHost = (TabHost) v.findViewById(android.R.id.tabhost);
@@ -227,24 +224,6 @@ public class MyHome extends Fragment /*implements OnTabChangeListener,*/
         //}
         tabHost.setOnTabChangedListener(this);
     }*/
-
-    /* @Override
-     public void onTabChanged(String tabId) {
-         int pos = tabHost.getCurrentTab();
-         this.viewPager.setCurrentItem(pos);
-
-         HorizontalScrollView hScrollView = (HorizontalScrollView) v
-                 .findViewById(R.id.hScrollView);
-         View tabView = tabHost.getCurrentTabView();
-         int scrollPos = tabView.getLeft()
-                 - (hScrollView.getWidth() - tabView.getWidth()) / 2;
-         hScrollView.smoothScrollTo(scrollPos, 0);
-
-     }
- */
-    @Override
-    public void onPageScrollStateChanged(int arg0) {
-    }
 
     @Override
     public void onPageScrolled(int arg0, float arg1, int arg2) {
@@ -362,6 +341,23 @@ public class MyHome extends Fragment /*implements OnTabChangeListener,*/
         ).show();
 
 
+    }
+
+    // fake content for tabhost
+    class FakeContent implements TabContentFactory {
+        private final Context mContext;
+
+        public FakeContent(Context context) {
+            mContext = context;
+        }
+
+        @Override
+        public View createTabContent(String tag) {
+            View v = new View(mContext);
+            v.setMinimumHeight(0);
+            v.setMinimumWidth(0);
+            return v;
+        }
     }
 
 }

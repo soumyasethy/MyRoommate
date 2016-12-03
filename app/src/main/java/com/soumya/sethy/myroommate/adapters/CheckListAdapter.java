@@ -1,9 +1,5 @@
 package com.soumya.sethy.myroommate.adapters;
 
-import java.util.ArrayList;
-
-import com.soumya.sethy.myroommate.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,20 +8,42 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.soumya.sethy.myroommate.R;
+
+import java.util.ArrayList;
 
 public class CheckListAdapter extends BaseAdapter {
+	static ArrayList<RoommateName> objects;
 	Context ctx;
 	LayoutInflater lInflater;
-	static ArrayList<RoommateName> objects;
+	OnCheckedChangeListener myCheckChangList = new OnCheckedChangeListener() {
+		public void onCheckedChanged(CompoundButton buttonView,
+									 boolean isChecked) {
+			getProduct((Integer) buttonView.getTag()).box = isChecked;
+		}
+	};
 
 	public CheckListAdapter(Context context, ArrayList<RoommateName> products) {
 		ctx = context;
 		objects = products;
 		lInflater = (LayoutInflater) ctx
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+
+	public static ArrayList<RoommateName> getBox() {
+		ArrayList<RoommateName> box = new ArrayList<RoommateName>();
+		if (objects == null) {
+
+		} else {
+			for (RoommateName p : objects) {
+				if (p.box)
+					box.add(p);
+			}
+		}
+
+		return box;
 	}
 
 	@Override
@@ -64,25 +82,4 @@ public class CheckListAdapter extends BaseAdapter {
 	RoommateName getProduct(int position) {
 		return ((RoommateName) getItem(position));
 	}
-
-	public static ArrayList<RoommateName> getBox() {
-		ArrayList<RoommateName> box = new ArrayList<RoommateName>();
-		if (objects == null) {
-		
-		} else {
-			for (RoommateName p : objects) {
-				if (p.box)
-					box.add(p);
-			}
-		}
-		
-		return box;
-	}
-
-	OnCheckedChangeListener myCheckChangList = new OnCheckedChangeListener() {
-		public void onCheckedChanged(CompoundButton buttonView,
-				boolean isChecked) {
-			getProduct((Integer) buttonView.getTag()).box = isChecked;
-		}
-	};
 }

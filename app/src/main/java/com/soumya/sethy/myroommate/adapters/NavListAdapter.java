@@ -1,7 +1,5 @@
 package com.soumya.sethy.myroommate.adapters;
 
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
@@ -12,6 +10,8 @@ import android.widget.TextView;
 
 import com.soumya.sethy.myroommate.R;
 import com.soumya.sethy.myroommate.models.NavItem;
+
+import java.util.List;
 
 public class NavListAdapter extends ArrayAdapter<NavItem>{
 	

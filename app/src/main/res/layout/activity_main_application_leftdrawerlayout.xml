@@ -1,11 +1,8 @@
-<com.mxn.soul.flowingdrawer_core.LeftDrawerLayout
+<com.mxn.soul.flowingdrawer_core.LeftDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_drawerlayout"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    >
+    android:clipChildren="false">
     <!--content-->
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/content"

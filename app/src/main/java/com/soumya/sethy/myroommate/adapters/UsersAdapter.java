@@ -1,7 +1,5 @@
 package com.soumya.sethy.myroommate.adapters;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +10,9 @@ import android.widget.TextView;
 import com.soumya.sethy.myroommate.Pojo.UserBillDetails;
 import com.soumya.sethy.myroommate.R;
 
-public class UsersAdapter extends ArrayAdapter<UserBillDetails> {
-    // View lookup cache
-    private static class ViewHolder {
-        TextView name;
-        TextView amount;
-    }
+import java.util.ArrayList;
 
+public class UsersAdapter extends ArrayAdapter<UserBillDetails> {
     public UsersAdapter(Context context, ArrayList<UserBillDetails> users) {
        super(context, R.layout.list, users);
     }
@@ -26,7 +20,7 @@ public class UsersAdapter extends ArrayAdapter<UserBillDetails> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
        // Get the data item for this position
-       UserBillDetails userBillDetails = getItem(position);    
+        UserBillDetails userBillDetails = getItem(position);
        // Check if an existing view is being reused, otherwise inflate the view
        ViewHolder viewHolder; // view lookup cache stored in tag
        if (convertView == null) {
@@ -45,4 +39,10 @@ public class UsersAdapter extends ArrayAdapter<UserBillDetails> {
        // Return the completed view to render on screen
        return convertView;
    }
+
+    // View lookup cache
+    private static class ViewHolder {
+        TextView name;
+        TextView amount;
+    }
 }

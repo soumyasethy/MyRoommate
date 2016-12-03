@@ -7,7 +7,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -153,7 +152,7 @@ public class AddExpensesMenuFragment extends MenuFragment implements DatePickerD
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat(
                 /*hh:mm aa */"yyyyMMdd", Locale.getDefault());
-                Date today = cal.getInstance().getTime();
+                Date today = Calendar.getInstance().getTime();
                 src_transaction_dt = Integer.valueOf(dateFormat.format(today));
 
                 // Getting Separate Payment Details of all user
@@ -227,7 +226,6 @@ public class AddExpensesMenuFragment extends MenuFragment implements DatePickerD
                 }
                 ref.child("Expenses").child(String.valueOf(_id)).setValue(all_expensesObj);
                // Tab3Fragment.dialogFragment.dismiss();
-                ;
                 //Toast.makeText(getActivity(), "Expenses Added", 1000).show();
                 Snackbar.with(getActivity()) // context
                         .text("Expenses Added")
